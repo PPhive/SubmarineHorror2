@@ -59,7 +59,7 @@ MonoBehaviour:
   SwimmingStance: {fileID: 6236471838301583531}
   DistanceToPlayer: 0
   Streched: 0
-  SearchRange: 7
+  SearchRange: 15
   SearchRangeClose: 5
 --- !u!54 &158331832361229204
 Rigidbody:
@@ -92,7 +92,7 @@ SpringJoint:
   m_Spring: 1
   m_Damper: 0.2
   m_MinDistance: 1
-  m_MaxDistance: 8
+  m_MaxDistance: 16
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -159,7 +159,7 @@ Transform:
   m_GameObject: {fileID: 6236471837973442622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -45.699966, z: 33.890045}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6236471839052772453}
   m_RootOrder: 0
@@ -171,7 +171,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6236471837973442622}
-  m_Mesh: {fileID: 6329158148709259305, guid: 71984570ed267fd409e8b8bac9f1f099, type: 3}
+  m_Mesh: {fileID: 6329158148709259305, guid: f828741d04d97ab4e8464a76f041bf44, type: 3}
 --- !u!23 &6236471837973442608
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -191,7 +191,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 05b1b570953e4ca4db5fd7f09ffec738, type: 2}
+  - {fileID: 2100000, guid: 70759d8b01c586d4ba90a0b437d0acb0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -254,7 +254,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6236471838301583531}
-  m_Mesh: {fileID: -5939628662134259787, guid: 71984570ed267fd409e8b8bac9f1f099, type: 3}
+  m_Mesh: {fileID: -5939628662134259787, guid: f828741d04d97ab4e8464a76f041bf44, type: 3}
 --- !u!23 &6236471838301583533
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -274,8 +274,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 05b1b570953e4ca4db5fd7f09ffec738, type: 2}
-  - {fileID: 2100000, guid: a348535e3479cfc4f82406fddc53d6e5, type: 2}
+  - {fileID: 2100000, guid: 70759d8b01c586d4ba90a0b437d0acb0, type: 2}
+  - {fileID: 2100000, guid: 70759d8b01c586d4ba90a0b437d0acb0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -324,7 +324,7 @@ Transform:
   m_GameObject: {fileID: 6236471838513799228}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -45.699966, z: 33.890045}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6236471838953214432}
   m_RootOrder: 0
@@ -336,7 +336,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6236471838513799228}
-  m_Mesh: {fileID: 6329158148709259305, guid: 71984570ed267fd409e8b8bac9f1f099, type: 3}
+  m_Mesh: {fileID: -5597002278806442958, guid: f828741d04d97ab4e8464a76f041bf44, type: 3}
 --- !u!23 &6236471838513799230
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -356,7 +356,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 05b1b570953e4ca4db5fd7f09ffec738, type: 2}
+  - {fileID: 2100000, guid: 70759d8b01c586d4ba90a0b437d0acb0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -437,8 +437,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 05b1b570953e4ca4db5fd7f09ffec738, type: 2}
-  - {fileID: 2100000, guid: a348535e3479cfc4f82406fddc53d6e5, type: 2}
+  - {fileID: 2100000, guid: 70759d8b01c586d4ba90a0b437d0acb0, type: 2}
+  - {fileID: 2100000, guid: 70759d8b01c586d4ba90a0b437d0acb0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -485,7 +485,7 @@ Transform:
   m_GameObject: {fileID: 6236471838953214433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -6.5, z: -23}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6236471838513799231}
   m_Father: {fileID: 6236471838301583530}
