@@ -6,12 +6,16 @@ public class CameraFX : MonoBehaviour
 {
     public static CameraFX instance = null;
 
+    [SerializeField] private float ambientShakeIntensity = .03f;
     [SerializeField] private float lowShakeIntensity = .1f;
     [SerializeField] private float medShakeIntensity = .2f;
     [SerializeField] private float highShakeIntensity = .3f;
     [SerializeField] private float lowShakeDuration = .25f;
     [SerializeField] private float medShakeDuration = .5f;
     [SerializeField] private float highShakeDuration = 1f;
+
+    private bool timedShaking = false;
+    public bool ambientRumbling = false;
 
     private Vector3 originalLocalPos;
     private Vector3 originalLocalRot;
@@ -31,6 +35,15 @@ public class CameraFX : MonoBehaviour
         originalLocalRot = transform.localEulerAngles;
     }
 
+    private void Update()
+    {
+        if (ambientRumbling && !timedShaking)
+        {
+            transform.localPosition = originalLocalPos + (new Vector3(Random.Range(-.1f, .1f), Random.Range(-.1f, .1f), 0f) * ambientShakeIntensity);
+            transform.localEulerAngles = originalLocalRot + (new Vector3(Random.Range(-10f, 10f), Random.Range(-50f, 50f), 0f) * ambientShakeIntensity);
+        }
+    }
+
     public void LowShake()
     {
         StartCoroutine(LowShakeEnum());
@@ -38,6 +51,7 @@ public class CameraFX : MonoBehaviour
 
     private IEnumerator LowShakeEnum()
     {
+        timedShaking = true;
         float elapsedTime = 0;
         while (elapsedTime < lowShakeDuration)
         {
@@ -48,6 +62,7 @@ public class CameraFX : MonoBehaviour
         }
         transform.localPosition = originalLocalPos;
         transform.localEulerAngles = originalLocalRot;
+        timedShaking = false;
     }
 
     public void MedShake()
@@ -57,6 +72,7 @@ public class CameraFX : MonoBehaviour
 
     private IEnumerator MedShakeEnum()
     {
+        timedShaking = true;
         float elapsedTime = 0;
         while (elapsedTime < medShakeDuration)
         {
@@ -67,6 +83,7 @@ public class CameraFX : MonoBehaviour
         }
         transform.localPosition = originalLocalPos;
         transform.localEulerAngles = originalLocalRot;
+        timedShaking = false;
     }
 
     public void HighShake()
@@ -76,6 +93,7 @@ public class CameraFX : MonoBehaviour
 
     private IEnumerator HighShakeEnum()
     {
+        timedShaking = true;
         float elapsedTime = 0;
         while (elapsedTime < highShakeDuration)
         {
@@ -86,6 +104,7 @@ public class CameraFX : MonoBehaviour
         }
         transform.localPosition = originalLocalPos;
         transform.localEulerAngles = originalLocalRot;
+        timedShaking = false;
     }
 
 
