@@ -23,6 +23,10 @@ public class SubmarineMovement : MonoBehaviour
     [SerializeField] private float horiMouseSensitivity = 100f;
     [SerializeField] private float rotSensitivity = 1f;
 
+    // Rotation parameters
+    [SerializeField] private float bossForce = 10000f;
+    [SerializeField] private float bossTorque = 1000f;
+
     private Quaternion intendedRot = Quaternion.identity;
 
     private Rigidbody rb;
@@ -66,12 +70,24 @@ public class SubmarineMovement : MonoBehaviour
     {
         if (canMove)
         {
+            if (moveZ > .1f || moveZ < -.1f || moveX > .1f || moveX < -.1f)
+            {
+                PlayerManager.instance.Moving();
+            }
+            else
+            {
+                PlayerManager.instance.NotMoving();
+            }
+
             // Handle spacial movement
             Vector3 forwardForce;
             forwardForce = Vector3.forward * forwardMovePower * moveZ;
+
+
             if (moveZ > 0 && shift > 0)
             {
                 forwardForce *= sprintMultiplier;
+                PlayerManager.instance.MovingFast();
             }
             else if (moveZ < 0)
             {
@@ -80,14 +96,6 @@ public class SubmarineMovement : MonoBehaviour
 
             Vector3 horizontalForce;
             horizontalForce = Vector3.right * horizontalMovePower * moveX;
-            if (moveZ > 0 && shift > 0)
-            {
-                forwardForce *= sprintMultiplier;
-            }
-            else if (moveZ < 0)
-            {
-                forwardForce *= backwardMoveMultiplier;
-            }
 
             Vector3 totalForce = forwardForce + horizontalForce;
 
@@ -138,6 +146,38 @@ public class SubmarineMovement : MonoBehaviour
 
 
             //transform.localEulerAngles = new Vector3(Mathf.Clamp(transform.localEulerAngles.x, -90, 90), transform.localEulerAngles.y, 0f);
+        }
+    }
+
+    public void BossPush(Vector3 BossPos)
+    {
+        Vector3 forceDir = (transform.position - BossPos).normalized;
+
+        rb.AddForce(forceDir * bossForce, ForceMode.Impulse);
+        rb.AddTorque(transform.right * bossTorque, ForceMode.Impulse);
+    }
+
+    public void CaughtInExplosion(Vector3 ExplosionPos)
+    {
+        Vector3 forceDir = (transform.position - ExplosionPos).normalized;
+
+        rb.AddForce(forceDir * 1000f, ForceMode.Impulse);
+        rb.AddTorque(transform.right * 200f, ForceMode.Impulse);
+    }
+
+    public void DeathSequence()
+    {
+        StartCoroutine(DeathSequenceEnum());
+    }
+
+    private IEnumerator DeathSequenceEnum()
+    {
+        while (true)
+        {
+            rb.AddForce(Vector3.down * 1f, ForceMode.Impulse);
+            rb.AddTorque(transform.right * .1f, ForceMode.Impulse);
+            rb.AddTorque(transform.forward * .1f, ForceMode.Impulse);
+            yield return new WaitForFixedUpdate();
         }
     }
 }

@@ -44,10 +44,12 @@ public class Harpoon : MonoBehaviour
         {
             MyJoint.maxDistance = 0f;
             Debug.Log("Retracting");
+            HarpoonGun.instance.ReelInSound();
         }
         else
         {
-            MyJoint.maxDistance = 15f;
+            MyJoint.maxDistance = 25f;
+            HarpoonGun.instance.StopReelInSound();
         }
 
         MyJoint.connectedAnchor = new Vector3(AnchorShiftX, AnchorShiftY, AnchorShiftZ);
@@ -79,11 +81,13 @@ public class Harpoon : MonoBehaviour
             //TargetHit.enabled = false;
             other.transform.parent = transform;
             other.transform.localPosition = new Vector3(0, 0, Random.Range(1.5f, 2.3f));
+            HarpoonGun.instance.HitSound();
         }
 
         if (other.tag == "Wood") 
         {
             RB.constraints = RigidbodyConstraints.FreezeAll;
+            HarpoonGun.instance.HitSound();
         }
     }
 

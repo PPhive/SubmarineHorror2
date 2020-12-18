@@ -10,43 +10,64 @@ using UnityEngine;
 
 public class BossSight : MonoBehaviour
 {
+    public bool activated = true;
     public bool seesPlayer = false;
     private float timeSeeingPlayer = 0;
+    private GameObject lightHolder;
     [SerializeField] private PlayerManager playerManager;
+
+    [SerializeField] private float sightRange = 50f;
+    [SerializeField] private float sightTimeCountdown = 15f;
+
+    [SerializeField] private LayerMask sightLayers;
 
     // Start is called before the first frame update
     void Start()
     {
         playerManager = PlayerManager.instance;
+        lightHolder = GetComponentInChildren<Light>().gameObject;
+        lightHolder.GetComponent<Light>().intensity = 0;
     }
 
     private void FixedUpdate()
     {
-        Ray bossToPlayer = new Ray(playerManager.transform.position, (transform.position - playerManager.transform.position).normalized);
-        if(Physics.Raycast(bossToPlayer, out RaycastHit hit, 50f))
+        if (activated || !GameManager.instance.dead)
         {
-            // if the boss has uninterrupted line of sight to player
-            if (hit.collider.CompareTag("Player"))
+            Ray bossToPlayer = new Ray(transform.position, (playerManager.transform.position - transform.position).normalized);
+            if (Physics.Raycast(bossToPlayer, out RaycastHit hit, sightRange, sightLayers))
             {
-                timeSeeingPlayer += Time.fixedDeltaTime;
-                Debug.Log("timeSeeingPlayer : " + timeSeeingPlayer);
-                // if the boss couldn't previously see the player
-                if (!seesPlayer)
+                // if the boss has uninterrupted line of sight to player
+                if (hit.collider.CompareTag("Player"))
                 {
-                    // trigger boss seeing player
-                    CaughtPlayer();
-                }
+                    timeSeeingPlayer += Time.fixedDeltaTime;
 
-                if (timeSeeingPlayer > GameManager.instance.numPillars)
+                    lightHolder.transform.LookAt(playerManager.transform);
+
+                    // if the boss couldn't previously see the player
+                    if (!seesPlayer)
+                    {
+                        // trigger boss seeing player
+                        CaughtPlayer();
+                    }
+
+                    if (timeSeeingPlayer > GameManager.instance.numPillars + sightTimeCountdown)
+                    {
+                        BossSeenTooLong();
+                    }
+                }
+                else if (seesPlayer)
                 {
-                    Debug.Log("Had sight of player for too long");
-                    playerManager.BossSeenTooLong();
+                    LostPlayer();
                 }
             }
-            else if (seesPlayer)
+            else
             {
                 LostPlayer();
             }
+        }
+        else if (seesPlayer)
+        {
+            LostPlayer();
         }
     }
 
@@ -57,6 +78,8 @@ public class BossSight : MonoBehaviour
     {
         seesPlayer = true;
         Debug.Log("Boss has seen player.");
+        lightHolder.GetComponent<Light>().intensity = 100;
+        playerManager.BossSawPlayer();
     }
 
     /*
@@ -67,5 +90,18 @@ public class BossSight : MonoBehaviour
         seesPlayer = false;
         Debug.Log("Boss has lost player.");
         timeSeeingPlayer = 0;
+        lightHolder.GetComponent<Light>().intensity = 0;
+        playerManager.BossLostPlayer();
+    }
+
+    /*
+     * Triggers when the boss loses the player after seeing them.
+     */
+    private void BossSeenTooLong()
+    {
+        Debug.Log("Had sight of player for too long");
+        timeSeeingPlayer = -5;
+        playerManager.BossSeenPlayerTooLong(transform.position);
+        lightHolder.GetComponent<Light>().intensity = 1000;
     }
 }
