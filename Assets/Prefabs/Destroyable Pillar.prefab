@@ -5228,6 +5228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92273ca7df4906c4781e1cb22b31ca1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bombPlaceText: {fileID: 0}
 --- !u!54 &1425807239734696283
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5387,6 +5388,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3146353676748942616}
     m_Modifications:
+    - target: {fileID: -5178661895559278292, guid: 53bc03a99e1fd4535a2f48dabf44a4b5, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1657923195866382429, guid: f9962186a16e82d4fac1ad2fb1bdb6d7, type: 3}
     - target: {fileID: -4216859302048453862, guid: 53bc03a99e1fd4535a2f48dabf44a4b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5526,6 +5531,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.0005
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: 43c854a5f7f937d4ebfa7455aea7c0e7, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -8938905153939762220, guid: a14019ee1ccf23843b6411f1e2a0312c, type: 3}
     - target: {fileID: 919132149155446097, guid: 43c854a5f7f937d4ebfa7455aea7c0e7, type: 3}
       propertyPath: m_Name
       value: BrokenPillar
@@ -5600,6 +5609,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: 43c854a5f7f937d4ebfa7455aea7c0e7, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -8938905153939762220, guid: a14019ee1ccf23843b6411f1e2a0312c, type: 3}
     - target: {fileID: 919132149155446097, guid: 43c854a5f7f937d4ebfa7455aea7c0e7, type: 3}
       propertyPath: m_Name
       value: BrokenPillar2
