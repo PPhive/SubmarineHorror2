@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
  * Creator: Nate Smith
@@ -21,7 +22,8 @@ public class BossSight : MonoBehaviour
 
     [SerializeField] private LayerMask sightLayers;
 
-    [SerializeField] private SpriteRenderer[] enemyEyes;
+    [SerializeField] private Sprite[] enemyEyeSprites = null;
+    [SerializeField] private Image[] enemyEyes = null;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,12 @@ public class BossSight : MonoBehaviour
         playerManager = PlayerManager.instance;
         lightHolder = GetComponentInChildren<Light>().gameObject;
         lightHolder.GetComponent<Light>().intensity = 0;
+
+        foreach (Image eye in enemyEyes)
+        {
+            eye.sprite = enemyEyeSprites[0];
+            eye.enabled = false;
+        }
     }
 
     private void FixedUpdate()
@@ -53,6 +61,9 @@ public class BossSight : MonoBehaviour
                     }
 
                     // lerp between states
+                    EyeSprite();
+
+
 
                     if (timeSeeingPlayer > GameManager.instance.numPillars + sightTimeCountdown)
                     {
@@ -76,6 +87,33 @@ public class BossSight : MonoBehaviour
     }
 
     /*
+     * Sets the Eye sprites to the appropriate graphic
+     */
+    private void EyeSprite()
+    {
+        float fraction = timeSeeingPlayer / (GameManager.instance.numPillars + sightTimeCountdown);
+        if (fraction < 0)
+        {
+            foreach (Image eye in enemyEyes)
+            {
+                eye.sprite = enemyEyeSprites[enemyEyeSprites.Length - 1];
+            }
+        }
+        else
+        {
+            fraction = Mathf.Clamp(fraction, 0, 1f);
+            int rounded = (int)(fraction * (enemyEyeSprites.Length - 1));
+            Debug.Log("rounded: " + rounded);
+
+
+            foreach (Image eye in enemyEyes)
+            {
+                eye.sprite = enemyEyeSprites[rounded];
+            }
+        }
+    }
+
+    /*
      * Triggers when the boss spots the player after not seeing them.
      */
     private void CaughtPlayer()
@@ -84,6 +122,12 @@ public class BossSight : MonoBehaviour
         Debug.Log("Boss has seen player.");
         lightHolder.GetComponent<Light>().intensity = 100;
         playerManager.BossSawPlayer();
+
+        foreach (Image eye in enemyEyes)
+        {
+            eye.sprite = enemyEyeSprites[0];
+            eye.enabled = true;
+        }
     }
 
     /*
@@ -96,6 +140,12 @@ public class BossSight : MonoBehaviour
         timeSeeingPlayer = 0;
         lightHolder.GetComponent<Light>().intensity = 0;
         playerManager.BossLostPlayer();
+
+        foreach (Image eye in enemyEyes)
+        {
+            eye.sprite = enemyEyeSprites[0];
+            eye.enabled = false;
+        }
     }
 
     /*

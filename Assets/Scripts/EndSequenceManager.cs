@@ -158,6 +158,10 @@ public class EndSequenceManager : MonoBehaviour
         // make rocks fall from ceiling, get lava columns to descend, get lava plane to raise, first start out slow then go faster
 
         PlayerManager.instance.camFX.ambientRumbling = true;
+        rumblingAS.Play();
+        rockCrashAS.Play();
+        rushingWaterAS.Play();
+
 
 
         yield return new WaitForSeconds(endTimeLimit);

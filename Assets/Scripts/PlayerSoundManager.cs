@@ -12,7 +12,8 @@ public class PlayerSoundManager : MonoBehaviour
     private AudioSource bossCaughtPlayerAS;
     private AudioSource bossAttackPlayerAS;
     private AudioSource subMovementAS;
-    private AudioSource ambientWaterAS;
+    private AudioSource ambientWaterAS1;
+    private AudioSource ambientWaterAS2;
 
     [SerializeField] private AudioClip[] impactClips = null; // 0 = hi, 1 = med, 2 = low
     [SerializeField] private AudioClip ambientBossRumbleClip = null;
@@ -23,8 +24,8 @@ public class PlayerSoundManager : MonoBehaviour
     [Range(0.0f, 1.0f), SerializeField] private float bossAttackPlayerVolume = 1f;
     [SerializeField] private AudioClip subMovementClip = null;
     [Range(0.0f, 1.0f), SerializeField] private float subMovementVolume = .5f;
-    [SerializeField] private AudioClip ambientWaterClip = null;
-    [Range(0.0f, 1.0f), SerializeField]private float ambientWaterVolume = .2f;
+    [SerializeField] private AudioClip[] ambientWaterClips = null;
+    [Range(0.0f, 1.0f), SerializeField]private float ambientWaterVolume = .4f;
 
     private void Awake()
     {
@@ -55,10 +56,31 @@ public class PlayerSoundManager : MonoBehaviour
         subMovementAS.volume = subMovementVolume;
         subMovementAS.clip = subMovementClip;
 
-        ambientWaterAS = gameObject.AddComponent<AudioSource>();
-        ambientWaterAS.loop = true;
-        subMovementAS.volume = ambientWaterVolume;
-        ambientWaterAS.clip = ambientWaterClip;
+        ambientWaterAS1 = gameObject.AddComponent<AudioSource>();
+        ambientWaterAS1.volume = ambientWaterVolume;
+        ambientWaterAS1.playOnAwake = false;
+        ambientWaterAS2 = gameObject.AddComponent<AudioSource>();
+        ambientWaterAS2.volume = ambientWaterVolume;
+        ambientWaterAS2.playOnAwake = false;
+        StartCoroutine(AmbientWaterEnum());
+    }
+
+    private IEnumerator AmbientWaterEnum()
+    {
+        while (true)
+        {
+            AudioClip curClip = ambientWaterClips[Random.Range(0, ambientWaterClips.Length)];
+            ambientWaterAS1.clip = curClip;
+            ambientWaterAS1.Play();
+
+            yield return new WaitForSeconds(curClip.length - 2f);
+
+            curClip = ambientWaterClips[Random.Range(0, ambientWaterClips.Length)];
+            ambientWaterAS2.clip = curClip;
+            ambientWaterAS2.Play();
+
+            yield return new WaitForSeconds(curClip.length - 2f);
+        }
     }
 
     public void Moving()

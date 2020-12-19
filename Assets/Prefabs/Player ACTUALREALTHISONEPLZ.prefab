@@ -467,7 +467,15 @@ MonoBehaviour:
   bossAttackPlayerVolume: 1
   subMovementClip: {fileID: 8300000, guid: 4e8107f5118833c4382214a745d4324e, type: 3}
   subMovementVolume: 0.5
-  ambientWaterClip: {fileID: 8300000, guid: 68534114d2095b143a734dfcea0c612c, type: 3}
+  ambientWaterClips:
+  - {fileID: 8300000, guid: 12c00778a1549824db1868187899ffc6, type: 3}
+  - {fileID: 8300000, guid: 68534114d2095b143a734dfcea0c612c, type: 3}
+  - {fileID: 8300000, guid: e7cb33fcfe1e66a44be16736d5dd16c3, type: 3}
+  - {fileID: 8300000, guid: de73153c287356e4d914b10cdc85d1b1, type: 3}
+  - {fileID: 8300000, guid: 4103a9cfb337f744e9096d970b374e2b, type: 3}
+  - {fileID: 8300000, guid: 4b9a248bc28ec9d43828ece25feddb14, type: 3}
+  - {fileID: 8300000, guid: a9cfee8bced076040b9db43fd9d7c0b2, type: 3}
+  - {fileID: 8300000, guid: 5dc86aa7912ef1b4fba3991686b203c4, type: 3}
   ambientWaterVolume: 0.2
 --- !u!169 &1543001962
 AudioLowPassFilter:
