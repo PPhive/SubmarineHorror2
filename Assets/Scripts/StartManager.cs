@@ -27,6 +27,8 @@ public class StartManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
             StartGame();
+        else if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
     }
 
     private IEnumerator StartText()
