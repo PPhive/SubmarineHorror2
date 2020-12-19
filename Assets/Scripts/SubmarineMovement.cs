@@ -165,6 +165,12 @@ public class SubmarineMovement : MonoBehaviour
         rb.AddTorque(transform.right * 200f, ForceMode.Impulse);
     }
 
+    public void PushUp()
+    {
+
+        rb.AddForce(Vector3.up * 1000f, ForceMode.Impulse);
+    }
+
     public void HitByRock(Vector3 RockPos)
     {
         Vector3 forceDir = (transform.position - RockPos).normalized;

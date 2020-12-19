@@ -65,6 +65,9 @@ public class PlayerManager : MonoBehaviour
     // handle damage from fast collisions
     private void OnCollisionEnter(Collision collision)
     {
+        if (health <= 0)
+            return;
+
         if (collision.gameObject.GetComponent<Harpoon>())
         {
             return;
@@ -78,6 +81,44 @@ public class PlayerManager : MonoBehaviour
                 TakeDamage(1);
                 playerSoundManager.HeavyImpact();
                 movement.BossPush(collision.gameObject.transform.position);
+                // damage animation
+                // collision sound
+            }
+            else
+            {
+                playerSoundManager.MedImpact();
+            }
+
+            return;
+        }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            if (lastCollisionTime + collisionCooldown < Time.time)
+            {
+                lastCollisionTime = Time.time;
+                TakeDamage(1);
+                playerSoundManager.HeavyImpact();
+                movement.BossPush(collision.gameObject.transform.position);
+                // damage animation
+                // collision sound
+            }
+            else
+            {
+                playerSoundManager.MedImpact();
+            }
+
+            return;
+        }
+
+        if (collision.gameObject.CompareTag("Lava"))
+        {
+            if (lastCollisionTime + collisionCooldown < Time.time)
+            {
+                lastCollisionTime = Time.time;
+                TakeDamage(1);
+                playerSoundManager.HeavyImpact();
+                movement.PushUp();
                 // damage animation
                 // collision sound
             }
@@ -203,7 +244,16 @@ public class PlayerManager : MonoBehaviour
     public void CaughtInExplosion(Vector3 explosionPos)
     {
         TakeDamage(1);
+        camFX.MedShake();
         movement.CaughtInExplosion(explosionPos);
+    }
+
+    public void TouchedLava()
+    {
+        TakeDamage(1);
+        camFX.MedShake();
+        movement.PushUp();
+        // play sizzling sound??
     }
 
     private void DeathSequence()

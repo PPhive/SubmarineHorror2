@@ -12,7 +12,7 @@ public class BoulderSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!triggered)
+        if (!triggered && other.CompareTag("Player"))
         {
             triggered = true;
 

@@ -13,6 +13,7 @@ using UnityEngine.UI;
  * start countdown - done
  * if player doesn't get out by countdown, make big crash sound then fade to black, say need to get out in time.
  * rushingwater sound as you exit, fade other sounds away
+ * rocks falling, lava capsules scale on y axis increasing, once they reach ground, have plane start to move upwards, if touch lava, die
  */
 
 public class EndSequenceManager : MonoBehaviour
@@ -20,14 +21,15 @@ public class EndSequenceManager : MonoBehaviour
 
     [Header("UI Elements")]
     [SerializeField] private Text timeToLeaveText = null;
-    [SerializeField] private Text timeLeftText = null;
-    [SerializeField] private Text tooSlowDeathText = null;
 
     [Header("Scene Elements")]
     // BoulderSpawner prefabs must be placed around the scene.
     [SerializeField] private BoulderSpawner[] boulderSpawners = null;
 
     [SerializeField] private EndingTrigger endingTrigger = null;
+
+    [SerializeField] private Transform[] lavaSpires = null;
+    [SerializeField] private LavaManager lavaLake = null;
 
     [Header("Time")]
     [SerializeField] private float endTimeLimit = 360f; // 6 mins, probs not necessary;
@@ -41,17 +43,15 @@ public class EndSequenceManager : MonoBehaviour
     private AudioSource rushingWaterAS;
     [SerializeField] private AudioClip rushingWaterClip = null;
 
-
-
     private void Start()
     {
+        boulderSpawners = FindObjectsOfType<BoulderSpawner>();
         foreach (BoulderSpawner boulderSpawner in boulderSpawners)
         {
             boulderSpawner.gameObject.SetActive(false);
         }
 
         timeToLeaveText.enabled = false;
-        timeLeftText.enabled = false;
 
         endingTrigger = GetComponentInChildren<EndingTrigger>();
         endingTrigger.gameObject.SetActive(false);
@@ -72,7 +72,14 @@ public class EndSequenceManager : MonoBehaviour
         rushingWaterAS.loop = true;
         rushingWaterAS.clip = rushingWaterClip;
 
-        tooSlowDeathText.enabled = false;
+        lavaLake = FindObjectOfType<LavaManager>();
+        lavaLake.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+            StartEndSequence();
     }
 
     public void StartEndSequence()
@@ -87,6 +94,8 @@ public class EndSequenceManager : MonoBehaviour
 
         StartCoroutine(TimeToLeaveTextFadeEnum());
         StartCoroutine(EndSequenceEnum());
+
+        StartCoroutine(LavaSequenceEnum());
     }
 
     private IEnumerator TimeToLeaveTextFadeEnum()
@@ -121,6 +130,29 @@ public class EndSequenceManager : MonoBehaviour
         timeToLeaveText.enabled = false;
     }
 
+    private IEnumerator LavaSequenceEnum()
+    {
+        float duration = 10f;
+        float elapsedTime = 0f;
+        Vector3 initScale = new Vector3(5f, 0f, 5f);
+        Vector3 finalScale = new Vector3(5f, 30f, 5f);
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            
+            foreach (Transform trans in lavaSpires)
+            {
+                trans.localScale = Vector3.Lerp(initScale, finalScale, elapsedTime / duration);
+            }
+            yield return null;
+        }
+
+
+        lavaLake.gameObject.SetActive(true);
+
+    }
+
+
     private IEnumerator EndSequenceEnum()
     {
         // make rocks fall from ceiling, get lava columns to descend, get lava plane to raise, first start out slow then go faster
@@ -128,33 +160,7 @@ public class EndSequenceManager : MonoBehaviour
         PlayerManager.instance.camFX.ambientRumbling = true;
 
 
-        timeLeftText.enabled = true;
-        timeLeftText.text = countDown.ToString();
-
-        timeLeftText.color = new Color(1f, 1f, 1f, 0f);
-        float duration = 1f;
-        float elapsedTime = 0f;
-        Color initColor = new Color(1f, 1f, 1f, 0f);
-        Color finalColor = new Color(1f, 1f, 1f, 1f);
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-
-            timeLeftText.color = Color.Lerp(initColor, finalColor, elapsedTime / duration);
-            yield return null;
-        }
-        timeLeftText.color = finalColor;
-
-        while (countDown >= 0)
-        {
-            if (countDown == 60)
-            {
-                timeLeftText.color = Color.red;
-            }
-            countDown--;
-            timeLeftText.text = countDown.ToString();
-            yield return new WaitForSeconds(1f);
-        }
+        yield return new WaitForSeconds(endTimeLimit);
 
         // after endTimeLimit seconds, end sequence
 
