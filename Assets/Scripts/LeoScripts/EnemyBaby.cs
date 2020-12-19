@@ -112,7 +112,7 @@ public class EnemyBaby : MonoBehaviour
     {
         if (Attacking)
         {
-            MyRB.AddForce(transform.forward * 2);
+            MyRB.AddForce(transform.forward * 4);
         }
     }
 

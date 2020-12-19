@@ -59,7 +59,7 @@ MonoBehaviour:
   SwimmingStance: {fileID: 6236471838301583531}
   DistanceToPlayer: 0
   Streched: 0
-  SearchRange: 15
+  SearchRange: 20
   SearchRangeClose: 5
 --- !u!54 &158331832361229204
 Rigidbody:
@@ -92,7 +92,7 @@ SpringJoint:
   m_Spring: 1
   m_Damper: 0.2
   m_MinDistance: 1
-  m_MaxDistance: 16
+  m_MaxDistance: 21
   m_Tolerance: 0.025
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
