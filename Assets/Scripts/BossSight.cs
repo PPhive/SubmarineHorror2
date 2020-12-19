@@ -21,6 +21,8 @@ public class BossSight : MonoBehaviour
 
     [SerializeField] private LayerMask sightLayers;
 
+    [SerializeField] private SpriteRenderer[] enemyEyes;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,8 @@ public class BossSight : MonoBehaviour
                         // trigger boss seeing player
                         CaughtPlayer();
                     }
+
+                    // lerp between states
 
                     if (timeSeeingPlayer > GameManager.instance.numPillars + sightTimeCountdown)
                     {

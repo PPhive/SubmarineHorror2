@@ -20,6 +20,11 @@ public class IntroSequence : MonoBehaviour
         blackOverlay.color = new Color(0f, 0f, 0f, 0f);
     }
 
+    private void Start()
+    {
+        StartCoroutine(NextSceneAfterOneMin());
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && !fading)
@@ -29,7 +34,14 @@ public class IntroSequence : MonoBehaviour
         text.rectTransform.position = text.rectTransform.position + new Vector3(0f, textSpeed * Time.deltaTime, 0f);
     }
 
-    private IEnumerator FadeOut()
+    private IEnumerator NextSceneAfterOneMin()
+    {
+        yield return new WaitForSeconds(60f);
+        if (!fading)
+            StartCoroutine(FadeOut());
+    }
+
+        private IEnumerator FadeOut()
     {
         audioSourceButton.Play();
         fading = true;
@@ -55,6 +67,5 @@ public class IntroSequence : MonoBehaviour
         audioSourceAmbiance2.volume = 0;
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(2);
-
     }
 }

@@ -18,13 +18,12 @@ public class PlayerManager : MonoBehaviour
 
     private float lastCollisionTime = 0f;
     [SerializeField] private float collisionCooldown = 2f;
-    [SerializeField] private Sprite[] dashboardDamageSprites = null;
+    [SerializeField] private SpriteRenderer[] dashboardDamageSprites = null;
 
     public CameraFX camFX;
     private SubmarineMovement movement;
     private PlayerLightManager playerLightManager;
     private PlayerSoundManager playerSoundManager;
-    private SpriteRenderer dashboardDamageSprite = null;
 
     private void Awake()
     {
@@ -39,7 +38,11 @@ public class PlayerManager : MonoBehaviour
 
         playerLightManager = GetComponentInChildren<PlayerLightManager>();
         playerSoundManager = GetComponentInChildren<PlayerSoundManager>();
-        dashboardDamageSprite = GetComponentInChildren<SpriteRenderer>();
+
+        foreach (SpriteRenderer spriteRenderer in dashboardDamageSprites)
+        {
+            spriteRenderer.enabled = false;
+        }
     }
 
     public void TakeDamage(int damage = 1)
@@ -55,15 +58,75 @@ public class PlayerManager : MonoBehaviour
 
         if (dashboardDamageSprites.Length > health)
         {
-            dashboardDamageSprite.sprite = dashboardDamageSprites[health];
+            dashboardDamageSprites[health].enabled = true;
         }
     }
 
     // handle damage from fast collisions
     private void OnCollisionEnter(Collision collision)
     {
+        if (health <= 0)
+            return;
+
         if (collision.gameObject.GetComponent<Harpoon>())
         {
+            return;
+        }
+
+        if (collision.gameObject.GetComponent<FallingBoulder>())
+        {
+            if (lastCollisionTime + collisionCooldown < Time.time)
+            {
+                lastCollisionTime = Time.time;
+                TakeDamage(1);
+                playerSoundManager.HeavyImpact();
+                movement.BossPush(collision.gameObject.transform.position);
+                // damage animation
+                // collision sound
+            }
+            else
+            {
+                playerSoundManager.MedImpact();
+            }
+
+            return;
+        }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            if (lastCollisionTime + collisionCooldown < Time.time)
+            {
+                lastCollisionTime = Time.time;
+                TakeDamage(1);
+                playerSoundManager.HeavyImpact();
+                movement.BossPush(collision.gameObject.transform.position);
+                // damage animation
+                // collision sound
+            }
+            else
+            {
+                playerSoundManager.MedImpact();
+            }
+
+            return;
+        }
+
+        if (collision.gameObject.CompareTag("Lava"))
+        {
+            if (lastCollisionTime + collisionCooldown < Time.time)
+            {
+                lastCollisionTime = Time.time;
+                TakeDamage(1);
+                playerSoundManager.HeavyImpact();
+                movement.PushUp();
+                // damage animation
+                // collision sound
+            }
+            else
+            {
+                playerSoundManager.MedImpact();
+            }
+
             return;
         }
 
@@ -181,7 +244,16 @@ public class PlayerManager : MonoBehaviour
     public void CaughtInExplosion(Vector3 explosionPos)
     {
         TakeDamage(1);
+        camFX.MedShake();
         movement.CaughtInExplosion(explosionPos);
+    }
+
+    public void TouchedLava()
+    {
+        TakeDamage(1);
+        camFX.MedShake();
+        movement.PushUp();
+        // play sizzling sound??
     }
 
     private void DeathSequence()
