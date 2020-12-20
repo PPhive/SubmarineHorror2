@@ -10,6 +10,8 @@ public class Harpoon : MonoBehaviour
     public SpringJoint MyJoint;
     public float Force;
 
+    public bool Released;
+
     private EnemyBaby TargetHit;
 
 
@@ -18,6 +20,7 @@ public class Harpoon : MonoBehaviour
     public float AnchorShiftY = -0.25f;
     public float AnchorShiftZ = 1.2f;
 
+    
 
     void Awake() 
     {
@@ -30,6 +33,7 @@ public class Harpoon : MonoBehaviour
     }
     void Start()
     {
+        Released = false;
         transform.position = HarpoonGun.instance.gameObject.transform.position;
         transform.rotation = HarpoonGun.instance.gameObject.transform.rotation;
         RB.AddForce(transform.forward*Force);
@@ -39,8 +43,19 @@ public class Harpoon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!Input.GetMouseButton(0))
+        {
+            Released = true;
+            RB.constraints = RigidbodyConstraints.None;
+        }
+
+        if (Released && Vector3.Distance(transform.position, HarpoonGun.instance.transform.position) < 0.7f)
+        {
+            HarpoonGun.instance.DeleteHarpoon();
+        }
+
         // Rope.transform.position = HarpoonGun.instance.gameObject.transform.position;
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) || Released)
         {
             MyJoint.maxDistance = 0f;
             Debug.Log("Retracting");
@@ -54,6 +69,8 @@ public class Harpoon : MonoBehaviour
 
         MyJoint.connectedAnchor = new Vector3(AnchorShiftX, AnchorShiftY, AnchorShiftZ);
 
+        
+
     }
 
     private void FixedUpdate()
@@ -63,13 +80,16 @@ public class Harpoon : MonoBehaviour
             MyJoint.spring = 300;
             //MyJoint.connectedBody = CallPlayerRigidBody.instance.RB;
         }
+        else
+        {
+            MyJoint.spring = 2;
+        }
     }
 
-    void Delete() 
+    void Delete() //This might not be used
     {
         Child.transform.parent = null;
         Destroy(this.gameObject);
-
     }
 
     void OnTriggerEnter(Collider other)
