@@ -113,19 +113,8 @@ public class PlayerManager : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Lava"))
         {
-            if (lastCollisionTime + collisionCooldown < Time.time)
-            {
-                lastCollisionTime = Time.time;
-                TakeDamage(1);
-                playerSoundManager.HeavyImpact();
-                movement.PushUp();
-                // damage animation
-                // collision sound
-            }
-            else
-            {
-                playerSoundManager.MedImpact();
-            }
+            LavaTouch();
+            
 
             return;
         }
@@ -154,6 +143,23 @@ public class PlayerManager : MonoBehaviour
             // Very minor hit
             camFX.LowShake();
             playerSoundManager.LowImpact();
+        }
+    }
+
+    public void LavaTouch()
+    {
+        if (lastCollisionTime + collisionCooldown < Time.time)
+        {
+            lastCollisionTime = Time.time;
+            TakeDamage(1);
+            playerSoundManager.HeavyImpact();
+            movement.PushUp();
+            // damage animation
+            // collision sound
+        }
+        else
+        {
+            playerSoundManager.MedImpact();
         }
     }
 
