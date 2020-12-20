@@ -65,13 +65,16 @@ public class HarpoonGun : MonoBehaviour
                 Instantiate(RopePrefab, transform.position, transform.rotation);
             }
         }
-        if (Input.GetMouseButtonUp(0) && true) 
+
+        /*
+        if (Input.GetMouseButtonUp(0)) 
         {
             Destroy(Harpoon);
             Destroy(Rope);
             LoadedHarpoon.SetActive(true);
             ReloadSound();
         }
+        */
     }
 
     public void FireSound()
@@ -108,5 +111,13 @@ public class HarpoonGun : MonoBehaviour
         if (ReloadClip)
             return;
         ReloadAS.Play();
+    }
+
+    public void DeleteHarpoon()
+    {
+        Destroy(Harpoon);
+        Destroy(Rope);
+        LoadedHarpoon.SetActive(true);
+        ReloadSound();
     }
 }

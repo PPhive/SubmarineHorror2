@@ -234,7 +234,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d11a6496b3d6e438a00317c6f3cb51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overlay: {fileID: 0}
+  deathText1: {fileID: 0}
+  deathText2: {fileID: 0}
+  winText1: {fileID: 0}
+  winText2: {fileID: 0}
+  dead: 0
+  won: 0
   numPillars: 5
+  secondarySpawn: {fileID: 0}
+  endSequenceManager: {fileID: 0}
 --- !u!4 &69670780
 Transform:
   m_ObjectHideFlags: 0
@@ -255,7 +264,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17724
+  m_Name: pb_Mesh17844
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -743,7 +752,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480791826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 644.29, y: 463.62, z: 61.05}
+  m_LocalPosition: {x: 644.29, y: 467.71, z: 66.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1123,7 +1132,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17754
+  m_Name: pb_Mesh17874
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1287,7 +1296,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17716
+  m_Name: pb_Mesh17836
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2111,6 +2120,10 @@ MonoBehaviour:
   RopePrefab: {fileID: 6195691711550265149, guid: 0a4fb877f7616e74f9bef39553b18514, type: 3}
   Rope: {fileID: 0}
   LoadedHarpoon: {fileID: 1237200775}
+  FireClip: {fileID: 0}
+  HitClip: {fileID: 0}
+  ReelInClip: {fileID: 0}
+  ReloadClip: {fileID: 0}
 --- !u!1 &1874252030841851669
 GameObject:
   m_ObjectHideFlags: 0
@@ -18328,6 +18341,8 @@ MonoBehaviour:
   vertMouseSensitivity: 200
   horiMouseSensitivity: 200
   rotSensitivity: 10
+  bossForce: 10000
+  bossTorque: 1000
 --- !u!54 &5073556153735312771
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18378,11 +18393,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
-  flashlightDim: {fileID: 7210061881982496559}
-  flashlightBright: {fileID: 1240475586739082260}
   collisionCooldown: 2
+  dashboardDamageSprites: []
   camFX: {fileID: 0}
-  collisionSounds: []
 --- !u!1 &5073556154107492851
 GameObject:
   m_ObjectHideFlags: 0

@@ -181,6 +181,7 @@ MonoBehaviour:
   RB: {fileID: 6971347832914588942}
   MyJoint: {fileID: 6971347832914588940}
   Force: 800
+  Released: 0
   AnchorShiftX: 0
   AnchorShiftY: 0
   AnchorShiftZ: 0
@@ -294,7 +295,7 @@ Transform:
   m_GameObject: {fileID: 6971347834246030799}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 1e-15, y: 0.00000004909, z: -0.04}
-  m_LocalScale: {x: 0.1764, y: 0.02, z: 0.1764}
+  m_LocalScale: {x: 0.1, y: 0.02, z: 0.1}
   m_Children: []
   m_Father: {fileID: 6971347833420695508}
   m_RootOrder: 1
