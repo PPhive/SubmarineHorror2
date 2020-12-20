@@ -32,6 +32,7 @@ public class EndSequenceManager : MonoBehaviour
     [SerializeField] private LavaManager lavaLake = null;
 
     [SerializeField] private Light[] directionalLights = null;
+    [SerializeField] private ParticleSystem[] particleSystems = null;
 
     [Header("Time")]
     [SerializeField] private float endTimeLimit = 360f; // 6 mins, probs not necessary;
@@ -82,6 +83,12 @@ public class EndSequenceManager : MonoBehaviour
         {
             light.enabled = false;
         }
+
+        particleSystems = GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem ps in particleSystems)
+        {
+            ps.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
@@ -104,6 +111,11 @@ public class EndSequenceManager : MonoBehaviour
         StartCoroutine(EndSequenceEnum());
 
         StartCoroutine(LavaSequenceEnum());
+
+        foreach (ParticleSystem ps in particleSystems)
+        {
+            ps.gameObject.SetActive(true);
+        }
     }
 
     private IEnumerator TimeToLeaveTextFadeEnum()

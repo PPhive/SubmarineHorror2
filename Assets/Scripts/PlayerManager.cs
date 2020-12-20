@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviour
 
     public void TakeDamage(int damage = 1)
     {
-        if (health <= 0)
+        if (health <= 0 || GameManager.instance.dead)
             return;
         health -= damage;
         // change dashboard sprite
@@ -264,6 +264,8 @@ public class PlayerManager : MonoBehaviour
 
     private void DeathSequence()
     {
+        if (GameManager.instance.dead)
+            return;
         StartCoroutine(DeathSequenceEnum());
     }
 
