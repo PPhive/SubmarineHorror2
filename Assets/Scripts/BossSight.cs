@@ -23,7 +23,8 @@ public class BossSight : MonoBehaviour
     [SerializeField] private LayerMask sightLayers;
 
     [SerializeField] private Sprite[] enemyEyeSprites = null;
-    [SerializeField] private Image[] enemyEyes = null;
+    [SerializeField] private Image[] enemyEyesIMG = null;
+    [SerializeField] private SpriteRenderer[] enemyEyesSR = null;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,12 @@ public class BossSight : MonoBehaviour
         lightHolder = GetComponentInChildren<Light>().gameObject;
         lightHolder.GetComponent<Light>().intensity = 0;
 
-        foreach (Image eye in enemyEyes)
+        foreach (Image eye in enemyEyesIMG)
+        {
+            eye.sprite = enemyEyeSprites[0];
+            eye.enabled = false;
+        }
+        foreach (SpriteRenderer eye in enemyEyesSR)
         {
             eye.sprite = enemyEyeSprites[0];
             eye.enabled = false;
@@ -94,7 +100,11 @@ public class BossSight : MonoBehaviour
         float fraction = timeSeeingPlayer / (GameManager.instance.numPillars + sightTimeCountdown);
         if (fraction < 0)
         {
-            foreach (Image eye in enemyEyes)
+            foreach (Image eye in enemyEyesIMG)
+            {
+                eye.sprite = enemyEyeSprites[enemyEyeSprites.Length - 1];
+            }
+            foreach (SpriteRenderer eye in enemyEyesSR)
             {
                 eye.sprite = enemyEyeSprites[enemyEyeSprites.Length - 1];
             }
@@ -106,9 +116,15 @@ public class BossSight : MonoBehaviour
             Debug.Log("rounded: " + rounded);
 
 
-            foreach (Image eye in enemyEyes)
+            foreach (Image eye in enemyEyesIMG)
             {
                 eye.sprite = enemyEyeSprites[rounded];
+                eye.enabled = true;
+            }
+            foreach (SpriteRenderer eye in enemyEyesSR)
+            {
+                eye.sprite = enemyEyeSprites[rounded];
+                eye.enabled = true;
             }
         }
     }
@@ -123,7 +139,12 @@ public class BossSight : MonoBehaviour
         lightHolder.GetComponent<Light>().intensity = 100;
         playerManager.BossSawPlayer();
 
-        foreach (Image eye in enemyEyes)
+        foreach (Image eye in enemyEyesIMG)
+        {
+            eye.sprite = enemyEyeSprites[0];
+            eye.enabled = true;
+        }
+        foreach (SpriteRenderer eye in enemyEyesSR)
         {
             eye.sprite = enemyEyeSprites[0];
             eye.enabled = true;
@@ -141,10 +162,15 @@ public class BossSight : MonoBehaviour
         lightHolder.GetComponent<Light>().intensity = 0;
         playerManager.BossLostPlayer();
 
-        foreach (Image eye in enemyEyes)
+        foreach (Image eye in enemyEyesIMG)
         {
             eye.sprite = enemyEyeSprites[0];
             eye.enabled = false;
+        }
+        foreach (SpriteRenderer eye in enemyEyesSR)
+        {
+            eye.sprite = enemyEyeSprites[0];
+            eye.enabled = true;
         }
     }
 
