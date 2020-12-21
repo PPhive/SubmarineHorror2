@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 163335612}
   - component: {fileID: 163335613}
   m_Layer: 10
-  m_Name: New Sprite (0)
+  m_Name: Cracked Glass Sprite (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 443657217}
   - component: {fileID: 443657218}
   m_Layer: 10
-  m_Name: New Sprite (4)
+  m_Name: Cracked Glass Sprite (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 506552121}
   - component: {fileID: 506552122}
   m_Layer: 10
-  m_Name: New Sprite (3)
+  m_Name: Cracked Glass Sprite (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 714751265}
   - component: {fileID: 714751266}
   m_Layer: 10
-  m_Name: New Sprite (2)
+  m_Name: Cracked Glass Sprite (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 734544474}
   - component: {fileID: 734544475}
   m_Layer: 10
-  m_Name: New Sprite (1)
+  m_Name: Cracked Glass Sprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -410,6 +410,87 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1607552531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1607552535}
+  - component: {fileID: 1607552534}
+  - component: {fileID: 1607552533}
+  m_Layer: 1
+  m_Name: WaterDistortion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1607552535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607552531}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.771}
+  m_LocalScale: {x: 1.5, y: 1.2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6747338960637727912}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1607552534
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607552531}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1607552533
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607552531}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9535c3fbcd2822349be40a745899802e, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1960425667
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,8 +548,16 @@ MonoBehaviour:
   bossAttackPlayerVolume: 1
   subMovementClip: {fileID: 8300000, guid: 4e8107f5118833c4382214a745d4324e, type: 3}
   subMovementVolume: 0.5
-  ambientWaterClip: {fileID: 8300000, guid: 68534114d2095b143a734dfcea0c612c, type: 3}
-  ambientWaterVolume: 0.2
+  ambientWaterClips:
+  - {fileID: 8300000, guid: 12c00778a1549824db1868187899ffc6, type: 3}
+  - {fileID: 8300000, guid: 68534114d2095b143a734dfcea0c612c, type: 3}
+  - {fileID: 8300000, guid: e7cb33fcfe1e66a44be16736d5dd16c3, type: 3}
+  - {fileID: 8300000, guid: de73153c287356e4d914b10cdc85d1b1, type: 3}
+  - {fileID: 8300000, guid: 4103a9cfb337f744e9096d970b374e2b, type: 3}
+  - {fileID: 8300000, guid: 4b9a248bc28ec9d43828ece25feddb14, type: 3}
+  - {fileID: 8300000, guid: a9cfee8bced076040b9db43fd9d7c0b2, type: 3}
+  - {fileID: 8300000, guid: 5dc86aa7912ef1b4fba3991686b203c4, type: 3}
+  ambientWaterVolume: 0.4
 --- !u!169 &1543001962
 AudioLowPassFilter:
   m_ObjectHideFlags: 0
@@ -505,7 +594,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1755,10 +1844,10 @@ MonoBehaviour:
   RopePrefab: {fileID: 6195691711550265149, guid: 0a4fb877f7616e74f9bef39553b18514, type: 3}
   Rope: {fileID: 0}
   LoadedHarpoon: {fileID: 7048690940055244038}
-  FireClip: {fileID: 0}
-  HitClip: {fileID: 0}
+  FireClip: {fileID: 8300000, guid: 92edf9ae1928bef4caeb1407fb5beb40, type: 3}
+  HitClip: {fileID: 8300000, guid: 3021b7fdedb7ddf4aaca52626deae31e, type: 3}
   ReelInClip: {fileID: 0}
-  ReloadClip: {fileID: 0}
+  ReloadClip: {fileID: 8300000, guid: 20b23d5cb1f6aef4baf62f0e7e449f4a, type: 3}
 --- !u!54 &1848008381222776887
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1923,7 +2012,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1607552535}
   m_Father: {fileID: 5073556152367663575}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1992,7 +2082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
+  m_RequiresOpaqueTextureOption: 1
   m_CameraType: 0
   m_Cameras: []
   m_RendererIndex: -1

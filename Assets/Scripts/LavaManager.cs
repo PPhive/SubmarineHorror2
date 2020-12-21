@@ -17,5 +17,9 @@ public class LavaManager : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + transform.up * Time.fixedDeltaTime * speed);
+        if (PlayerManager.instance.transform.position.y < transform.position.y)
+        {
+            PlayerManager.instance.LavaTouch();
+        }
     }
 }

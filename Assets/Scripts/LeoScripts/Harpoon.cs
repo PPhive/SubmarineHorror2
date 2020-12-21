@@ -49,7 +49,7 @@ public class Harpoon : MonoBehaviour
             RB.constraints = RigidbodyConstraints.None;
         }
 
-        if (Released && Vector3.Distance(transform.position, HarpoonGun.instance.transform.position) < 0.7f)
+        if (Released && Vector3.Distance(transform.position, HarpoonGun.instance.transform.position) < 0.9f)
         {
             HarpoonGun.instance.DeleteHarpoon();
         }

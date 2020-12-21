@@ -31,6 +31,9 @@ public class EndSequenceManager : MonoBehaviour
     [SerializeField] private Transform[] lavaSpires = null;
     [SerializeField] private LavaManager lavaLake = null;
 
+    [SerializeField] private Light[] directionalLights = null;
+    [SerializeField] private ParticleSystem[] particleSystems = null;
+
     [Header("Time")]
     [SerializeField] private float endTimeLimit = 360f; // 6 mins, probs not necessary;
     private float countDown = 10f;
@@ -74,6 +77,18 @@ public class EndSequenceManager : MonoBehaviour
 
         lavaLake = FindObjectOfType<LavaManager>();
         lavaLake.gameObject.SetActive(false);
+
+        directionalLights = GetComponentsInChildren<Light>();
+        foreach (Light light in directionalLights)
+        {
+            light.enabled = false;
+        }
+
+        particleSystems = GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem ps in particleSystems)
+        {
+            ps.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
@@ -96,6 +111,11 @@ public class EndSequenceManager : MonoBehaviour
         StartCoroutine(EndSequenceEnum());
 
         StartCoroutine(LavaSequenceEnum());
+
+        foreach (ParticleSystem ps in particleSystems)
+        {
+            ps.gameObject.SetActive(true);
+        }
     }
 
     private IEnumerator TimeToLeaveTextFadeEnum()
@@ -132,6 +152,11 @@ public class EndSequenceManager : MonoBehaviour
 
     private IEnumerator LavaSequenceEnum()
     {
+        foreach (Light light in directionalLights)
+        {
+            light.enabled = true;
+            light.intensity = 0f;
+        }
         float duration = 10f;
         float elapsedTime = 0f;
         Vector3 initScale = new Vector3(5f, 0f, 5f);
@@ -139,17 +164,23 @@ public class EndSequenceManager : MonoBehaviour
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            
+            float fraction = elapsedTime / duration;
+
             foreach (Transform trans in lavaSpires)
             {
-                trans.localScale = Vector3.Lerp(initScale, finalScale, elapsedTime / duration);
+                trans.localScale = Vector3.Lerp(initScale, finalScale, fraction);
             }
+            foreach (Light light in directionalLights)
+            {
+                light.intensity = Mathf.Lerp(0f, .2f, fraction);
+            }
+
             yield return null;
         }
 
 
         lavaLake.gameObject.SetActive(true);
-
+        
     }
 
 
@@ -158,6 +189,10 @@ public class EndSequenceManager : MonoBehaviour
         // make rocks fall from ceiling, get lava columns to descend, get lava plane to raise, first start out slow then go faster
 
         PlayerManager.instance.camFX.ambientRumbling = true;
+        rumblingAS.Play();
+        rockCrashAS.Play();
+        rushingWaterAS.Play();
+
 
 
         yield return new WaitForSeconds(endTimeLimit);

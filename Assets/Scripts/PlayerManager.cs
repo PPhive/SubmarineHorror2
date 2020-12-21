@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviour
 
     public void TakeDamage(int damage = 1)
     {
-        if (health <= 0)
+        if (health <= 0 || GameManager.instance.dead)
             return;
         health -= damage;
         // change dashboard sprite
@@ -113,19 +113,8 @@ public class PlayerManager : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Lava"))
         {
-            if (lastCollisionTime + collisionCooldown < Time.time)
-            {
-                lastCollisionTime = Time.time;
-                TakeDamage(1);
-                playerSoundManager.HeavyImpact();
-                movement.PushUp();
-                // damage animation
-                // collision sound
-            }
-            else
-            {
-                playerSoundManager.MedImpact();
-            }
+            LavaTouch();
+            
 
             return;
         }
@@ -154,6 +143,23 @@ public class PlayerManager : MonoBehaviour
             // Very minor hit
             camFX.LowShake();
             playerSoundManager.LowImpact();
+        }
+    }
+
+    public void LavaTouch()
+    {
+        if (lastCollisionTime + collisionCooldown < Time.time)
+        {
+            lastCollisionTime = Time.time;
+            TakeDamage(1);
+            playerSoundManager.HeavyImpact();
+            movement.PushUp();
+            // damage animation
+            // collision sound
+        }
+        else
+        {
+            playerSoundManager.MedImpact();
         }
     }
 
@@ -258,6 +264,8 @@ public class PlayerManager : MonoBehaviour
 
     private void DeathSequence()
     {
+        if (GameManager.instance.dead)
+            return;
         StartCoroutine(DeathSequenceEnum());
     }
 

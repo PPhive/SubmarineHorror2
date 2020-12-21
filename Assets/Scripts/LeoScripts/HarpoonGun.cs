@@ -42,7 +42,7 @@ public class HarpoonGun : MonoBehaviour
 
         ReloadAS = gameObject.AddComponent<AudioSource>();
         ReloadAS.playOnAwake = false;
-        ReloadAS.clip = ReelInClip;
+        ReloadAS.clip = ReloadClip;
     }
 
     void Start()
@@ -55,10 +55,10 @@ public class HarpoonGun : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             LoadedHarpoon.SetActive(false);
-            FireSound();
             if (Harpoon == null)
             {
                 Instantiate(HarpoonPrefab, transform.position, transform.rotation);
+                FireSound();
             }
             if (Rope == null) 
             {
@@ -79,37 +79,27 @@ public class HarpoonGun : MonoBehaviour
 
     public void FireSound()
     {
-        if (FireClip)
-            return;
         FireAS.Play();
     }
 
     public void HitSound()
     {
-        if (HitClip)
-            return;
         HitAS.Play();
     }
 
     public void ReelInSound()
     {
-        if (ReelInClip)
-            return;
         ReelInAS.Play();
     }
 
     public void StopReelInSound()
     {
-        if (!ReelInClip)
-            return;
-            if (ReelInAS.isPlaying)
+        if (ReelInAS.isPlaying)
             ReelInAS.Stop();
     }
 
     public void ReloadSound()
     {
-        if (ReloadClip)
-            return;
         ReloadAS.Play();
     }
 
