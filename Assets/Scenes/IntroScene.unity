@@ -396,45 +396,19 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'My Dearest Scuba Steve,
-
-
-    As I am sure you are aware, a great evil
-    has been unearthed beneath the frigid waves of the Atlantic. After ten thousand
-    years the caverns of Sitatinretap Mutatidem have been opened once more.
-
-
-    You
-    must destroy this evil at any cost. I trust you still have your submersible vehicle
-    from The War, and our mutual friend Josiah can get you enough dynamite to level
-    half of London.
-
-
-    You shall travel to the bottom of the ocean floor and destroy
-    the pillars that support the caverns, and rid the world of this great evil.
-
-
-    Beware!
-    This task is not without great danger, so bring along your trusty harpoon gun
-    as well.
-
-
-    Godspeed, Scuba Steve. Godspeed.
-
-
-    Yours,
-
-    Zem Lipz, Reigning
+  m_Text: "My Slunk,\r\n\r\nAs I am sure you are aware, a melodious, groaning evil
+    has been unearthed beneath the frigid waves of the Mouthed Cove. After ten thousand
+    years, the caverns we sealed to entrap it have been opened by the elder force.\r\n\r\nYou
+    still have your submersible from The War, and our mutual friend Josiah can supply
+    you enough dynamite to level half of London. You shall travel to the bottom of
+    the ocean floor and destroy the pillars that support the caverns. Your harpoon
+    gun will be of great aid to shoot and grapple whatever \"things\" you find down
+    there.\r\n\r\nRid the world of this melodious, groaning evil.\r\n\r\nGodspeed,
+    Slunk. Godspeed.\r\n\r\nIn great desperation,\r\nYour Queen Victoria \r\nReigning
     monarch of the United Kingdom of Great Britain and Ireland, Defender of the Faith,
-    Empress of India, and your Best Friend <3
-
-
-    P.S. When you return from your
-    mission, we will at last be able to announce our love to the world. Please return
-    quickly, my love!
-
-
-    P.P.S. Press ''Space'' to begin.'
+    Empress of India\r\n\r\nP.S. When you return from your mission, we will at last
+    be able to announce our news to the world. Please return quickly.\r\n\r\nP.P.S.
+    Press 'Space' to begin."
 --- !u!222 &312014356
 CanvasRenderer:
   m_ObjectHideFlags: 0
