@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WaterDistortionMat
+  m_Shader: {fileID: -6465566751694194690, guid: eb2baa6707c1eef4eb483e16b4360cdf, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_CD714520:
+        m_Texture: {fileID: 2800000, guid: 6b6ed9aa4810ae047b2ad5e311ef65e5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_85234141_Texture_1:
+        m_Texture: {fileID: 2800000, guid: e4a8ce0530766f14e9e7cc1076a580e2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_31FB8652: 0.05
+    m_Colors:
+    - Vector2_3F03F51B: {r: 0.03, g: 0, b: 0, a: 0}
+    - Vector2_AE3E041E: {r: 2, g: 2, b: 0, a: 0}
+  m_BuildTextureStacks: []
