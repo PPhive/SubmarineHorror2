@@ -86,7 +86,7 @@ public class BossSight : MonoBehaviour
                 LostPlayer();
             }
         }
-        else if (seesPlayer)
+        else if (seesPlayer || GameManager.instance.dead)
         {
             LostPlayer();
         }
