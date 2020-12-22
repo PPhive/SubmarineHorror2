@@ -30,7 +30,7 @@ public class RadarArrows : MonoBehaviour
         }
 
         //Arrow Scaling with distance;
-        Arrow.transform.localScale = new Vector3(2, 2, 2) * (1 - (Vector3.Distance(transform.position, Target.transform.position)/MaxDistance));
+        Arrow.transform.localScale = new Vector3(1, 1, 1) + new Vector3(1, 1, 1) * (1 - (Vector3.Distance(transform.position, Target.transform.position)/MaxDistance));
     }
 
     void Exiting(GameObject ExitingBaby)
