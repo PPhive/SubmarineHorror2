@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: e5e675522a3f8a04896f8303bf322520
   - enabled: 1
     path: Assets/Scenes/FinnSceneV2_FromIntro.unity
-    guid: 1cd7bf90eddc91a43809bb6858b12650
+    guid: 7c390161eace87c47a23073ec7c844d6
   - enabled: 1
     path: Assets/Scenes/FinnSceneV2.unity
     guid: 70ddb53318a90534f815ee4679e10da5
