@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // Ensure that there is only one instance of the GameManager.
+        // Ensure that there is only one instance of the GameManager.ger
         if (instance == null)
             instance = this;
         else if (instance != this)
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene(3);
             }
         }
         else if (won)
