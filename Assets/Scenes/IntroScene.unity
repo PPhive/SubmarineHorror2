@@ -360,7 +360,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -910}
+  m_AnchoredPosition: {x: 0, y: -924}
   m_SizeDelta: {x: 500, y: 2000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &312014355
@@ -396,19 +396,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "My Slunk,\r\n\r\nAs I am sure you are aware, a melodious, groaning evil
-    has been unearthed beneath the frigid waves of the Mouthed Cove. After ten thousand
-    years, the caverns we sealed to entrap it have been opened by the elder force.\r\n\r\nYou
-    still have your submersible from The War, and our mutual friend Josiah can supply
-    you enough dynamite to level half of London. You shall travel to the bottom of
-    the ocean floor and destroy the pillars that support the caverns. Your harpoon
-    gun will be of great aid to shoot and grapple whatever \"things\" you find down
-    there.\r\n\r\nRid the world of this melodious, groaning evil.\r\n\r\nGodspeed,
-    Slunk. Godspeed.\r\n\r\nIn great desperation,\r\nYour Queen Victoria \r\nReigning
-    monarch of the United Kingdom of Great Britain and Ireland, Defender of the Faith,
-    Empress of India\r\n\r\nP.S. When you return from your mission, we will at last
-    be able to announce our news to the world. Please return quickly.\r\n\r\nP.P.S.
-    Press 'Space' to begin."
+  m_Text: "My Dearest Elric Quasittor,\r\n\r\nAs I am sure you are aware, a melodious,
+    groaning evil has been unearthed beneath the frigid waves of the Mouthed Cove.
+    \n\nAfter ten thousand years, the caverns we sealed to entrap it have been opened
+    by the elder force.\r\n\r\nYou still have your submersible from The War, and
+    our mutual friend Josiah can supply you enough dynamite to level half of London.
+    \n\nYou shall travel to the bottom of the ocean floor and destroy the pillars
+    that support the caverns. \n\nYour harpoon gun will be of great aid to shoot
+    and grapple whatever \"things\" you find down there.\r\n\r\nRid the world of
+    this melodious, groaning evil.\r\n\r\nGodspeed, Elric. Godspeed.\r\n\r\nIn great
+    desperation,\r\nYour Queen Victoria \r\nReigning monarch of the United Kingdom
+    of Great Britain and Ireland, Defender of the Faith,\nEmpress of India\r\n"
 --- !u!222 &312014356
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1074,7 +1072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackOverlay: {fileID: 505992335}
-  textSpeed: 25
+  textSpeed: 20
   audioSourceAmbiance1: {fileID: 553626127}
   audioSourceAmbiance2: {fileID: 1444633802}
   audioSourceButton: {fileID: 1059453861}
@@ -1170,7 +1168,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3d7532cf9c174854298e19c294b7ded2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4c5a4147d59c0f54189f86806e91ae15, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

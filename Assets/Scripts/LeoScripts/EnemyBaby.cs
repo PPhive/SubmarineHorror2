@@ -20,6 +20,8 @@ public class EnemyBaby : MonoBehaviour
     public bool Streched;
     public float SearchRange; //When within this range, baby would start attacking if not out of the cord's range.
     public float SearchRangeClose; //When within this range, baby would attack even if being pulled by the cord, 
+    [Space]
+    public AudioSource MyAudioSource;
 
     void Start()
     {
@@ -82,9 +84,14 @@ public class EnemyBaby : MonoBehaviour
             }
         }
 
-        if (Attacking) 
+        if (Attacking)
         {
             transform.LookAt(PlayerManager.instance.transform);
+            MyAudioSource.enabled = true;
+        }
+        else
+        {
+            MyAudioSource.enabled = false;
         }
 
         if (Attacking || Patrolling)
@@ -105,6 +112,7 @@ public class EnemyBaby : MonoBehaviour
         {
             Debug.Log("Attacked Player");
             MyRB.AddForce(transform.forward * - 200);
+            MyAudioSource.PlayOneShot(MyAudioSource.clip);
             //Call Player take damage method
         }
     }

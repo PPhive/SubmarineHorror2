@@ -36,7 +36,7 @@ public class IntroSequence : MonoBehaviour
 
     private IEnumerator NextSceneAfterOneMin()
     {
-        yield return new WaitForSeconds(60f);
+        yield return new WaitForSeconds(70f);
         if (!fading)
             StartCoroutine(FadeOut());
     }
