@@ -39,6 +39,7 @@ public class EnemyBaby : MonoBehaviour
         if (DistanceToPlayer < SearchRangeClose)
         {
             Attacking = true;
+            GetComponent<AudioSource>().Play();
         }
         else if (DistanceToPlayer < SearchRange && !Streched)
         {
