@@ -79,6 +79,7 @@ public class StartManager : MonoBehaviour
             yield return null;
         }
         subTitleText.color = finalColor;
+        yield return new WaitForSeconds(2f);
 
         elapsedTime = 0f;
         while (elapsedTime < duration)

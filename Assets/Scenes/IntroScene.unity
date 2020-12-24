@@ -406,7 +406,7 @@ MonoBehaviour:
     and grapple whatever \"things\" you find down there.\r\n\r\nRid the world of
     this melodious, groaning evil.\r\n\r\nGodspeed, Elric. Godspeed.\r\n\r\nIn great
     desperation,\r\nYour Queen Victoria \r\nReigning monarch of the United Kingdom
-    of Great Britain and Ireland, Defender of the Faith,\nEmpress of India\r\n"
+    of Great Britain and Ireland, Defender of the Faith\n\n"
 --- !u!222 &312014356
 CanvasRenderer:
   m_ObjectHideFlags: 0
