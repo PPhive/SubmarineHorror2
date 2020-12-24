@@ -55,7 +55,6 @@ public class BossSight : MonoBehaviour
                 // if the boss has uninterrupted line of sight to player
                 if (hit.collider.CompareTag("Player"))
                 {
-                    timeSeeingPlayer += Time.fixedDeltaTime;
 
                     lightHolder.transform.LookAt(playerManager.transform);
 
@@ -71,10 +70,7 @@ public class BossSight : MonoBehaviour
 
 
 
-                    if (timeSeeingPlayer > GameManager.instance.numPillars + sightTimeCountdown)
-                    {
-                        BossSeenTooLong();
-                    }
+                    
                 }
                 else if (seesPlayer)
                 {
@@ -84,12 +80,32 @@ public class BossSight : MonoBehaviour
             else
             {
                 LostPlayer();
+                
             }
         }
         else if (seesPlayer || GameManager.instance.dead)
         {
             LostPlayer();
         }
+
+        if (activated)
+        {
+            if (seesPlayer)
+            {
+                timeSeeingPlayer += Time.fixedDeltaTime;
+                if (timeSeeingPlayer > GameManager.instance.numPillars + sightTimeCountdown)
+                {
+                    BossSeenTooLong();
+                }
+            }
+            else
+            {
+                timeSeeingPlayer -= Time.fixedDeltaTime;
+                if (timeSeeingPlayer < 0)
+                    timeSeeingPlayer = 0f;
+            }
+        }
+        Debug.Log("timeSeeingPlayer: " + timeSeeingPlayer);
     }
 
     /*
@@ -155,7 +171,6 @@ public class BossSight : MonoBehaviour
     private void LostPlayer()
     {
         seesPlayer = false;
-        timeSeeingPlayer = 0;
         lightHolder.GetComponent<Light>().intensity = 0;
         playerManager.BossLostPlayer();
 
@@ -176,7 +191,7 @@ public class BossSight : MonoBehaviour
      */
     private void BossSeenTooLong()
     {
-        timeSeeingPlayer = -5;
+        timeSeeingPlayer = -5f;
         playerManager.BossSeenPlayerTooLong(transform.position);
         lightHolder.GetComponent<Light>().intensity = 1000;
     }
