@@ -160,7 +160,7 @@ public class EndSequenceManager : MonoBehaviour
         float duration = 10f;
         float elapsedTime = 0f;
         Vector3 initScale = new Vector3(5f, 0f, 5f);
-        Vector3 finalScale = new Vector3(5f, 30f, 5f);
+        Vector3 finalScale = new Vector3(5f, 45f, 5f);
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
