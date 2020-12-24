@@ -113,7 +113,6 @@ public class BossSight : MonoBehaviour
         {
             fraction = Mathf.Clamp(fraction, 0, 1f);
             int rounded = (int)(fraction * (enemyEyeSprites.Length - 1));
-            Debug.Log("rounded: " + rounded);
 
 
             foreach (Image eye in enemyEyesIMG)
@@ -135,7 +134,6 @@ public class BossSight : MonoBehaviour
     private void CaughtPlayer()
     {
         seesPlayer = true;
-        Debug.Log("Boss has seen player.");
         lightHolder.GetComponent<Light>().intensity = 100;
         playerManager.BossSawPlayer();
 
@@ -157,7 +155,6 @@ public class BossSight : MonoBehaviour
     private void LostPlayer()
     {
         seesPlayer = false;
-        Debug.Log("Boss has lost player.");
         timeSeeingPlayer = 0;
         lightHolder.GetComponent<Light>().intensity = 0;
         playerManager.BossLostPlayer();
@@ -179,7 +176,6 @@ public class BossSight : MonoBehaviour
      */
     private void BossSeenTooLong()
     {
-        Debug.Log("Had sight of player for too long");
         timeSeeingPlayer = -5;
         playerManager.BossSeenPlayerTooLong(transform.position);
         lightHolder.GetComponent<Light>().intensity = 1000;
