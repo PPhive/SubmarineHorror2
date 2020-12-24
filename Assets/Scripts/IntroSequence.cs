@@ -23,6 +23,8 @@ public class IntroSequence : MonoBehaviour
     private void Start()
     {
         StartCoroutine(NextSceneAfterOneMin());
+        audioSourceAmbiance2 = FindObjectOfType<StartAmbiance>().GetComponent<AudioSource>();
+        
     }
 
     private void Update()
@@ -36,7 +38,7 @@ public class IntroSequence : MonoBehaviour
 
     private IEnumerator NextSceneAfterOneMin()
     {
-        yield return new WaitForSeconds(70f);
+        yield return new WaitForSeconds(74f);
         if (!fading)
             StartCoroutine(FadeOut());
     }
@@ -65,6 +67,7 @@ public class IntroSequence : MonoBehaviour
         blackOverlay.color = finalColor;
         audioSourceAmbiance1.volume = 0;
         audioSourceAmbiance2.volume = 0;
+        audioSourceAmbiance2.GetComponent<StartAmbiance>().Kill();
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(2);
     }

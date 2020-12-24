@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Text: "My Dearest Elric Quasittor,\r\n\r\nAs I am sure you are aware, a melodious,
     groaning evil has been unearthed beneath the frigid waves of the Mouthed Cove.
     \n\nAfter ten thousand years, the caverns we sealed to entrap it have been opened
-    by the elder force.\r\n\r\nYou still have your submersible from The War, and
+    by the Elder Force.\r\n\r\nYou still have your submersible from The War, and
     our mutual friend Josiah can supply you enough dynamite to level half of London.
     \n\nYou shall travel to the bottom of the ocean floor and destroy the pillars
     that support the caverns. \n\nYour harpoon gun will be of great aid to shoot
@@ -927,7 +927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1444633802
 AudioSource:
   m_ObjectHideFlags: 0
