@@ -2053,7 +2053,7 @@ GameObject:
   m_Component:
   - component: {fileID: 674178943}
   - component: {fileID: 674178944}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RightEyeSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3604,7 +3604,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1044731194}
   - component: {fileID: 1044731195}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LeftEyeSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11180,9 +11180,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8513424388201257645, guid: 58ee4aa3e242c314b86ae1a551d880e8, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3957782524123411102, guid: 58ee4aa3e242c314b86ae1a551d880e8, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1817752537321972114, guid: 58ee4aa3e242c314b86ae1a551d880e8, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -259972160606440404, guid: 58ee4aa3e242c314b86ae1a551d880e8, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 58ee4aa3e242c314b86ae1a551d880e8, type: 3}
       propertyPath: m_Name
       value: MonsterFinal
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 58ee4aa3e242c314b86ae1a551d880e8, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58ee4aa3e242c314b86ae1a551d880e8, type: 3}
