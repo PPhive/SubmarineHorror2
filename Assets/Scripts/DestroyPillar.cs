@@ -38,6 +38,8 @@ public class DestroyPillar : MonoBehaviour
         audioSourceDebris = gameObject.AddComponent<AudioSource>();
         audioSourceDebris.playOnAwake = false;
         audioSourceDebris.clip = debrisFallingClip;
+
+        notGlowingDynamite.SetActive(false);
     }
 
     public void TriggerExplosionCountdown()
