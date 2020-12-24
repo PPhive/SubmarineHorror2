@@ -105,7 +105,6 @@ public class BossSight : MonoBehaviour
                     timeSeeingPlayer = 0f;
             }
         }
-        Debug.Log("timeSeeingPlayer: " + timeSeeingPlayer);
     }
 
     /*
