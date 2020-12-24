@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // Ensure that there is only one instance of the GameManager.
+        // Ensure that there is only one instance of the GameManager.ger
         if (instance == null)
             instance = this;
         else if (instance != this)
