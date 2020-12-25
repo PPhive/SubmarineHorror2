@@ -89,7 +89,7 @@ public class EnemyBaby : MonoBehaviour
             transform.LookAt(PlayerManager.instance.transform);
             MyAudioSource.enabled = true;
         }
-        else
+        else if(!MyAudioSource.isPlaying)
         {
             MyAudioSource.enabled = false;
         }
