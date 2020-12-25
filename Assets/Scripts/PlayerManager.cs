@@ -68,7 +68,7 @@ public class PlayerManager : MonoBehaviour
         if (health <= 0)
             return;
 
-        if (collision.gameObject.GetComponent<Harpoon>())
+        if (collision.gameObject.GetComponent<Harpoon>() || collision.gameObject.GetComponent<LowPolyWater.LowPolyWater>())
         {
             return;
         }

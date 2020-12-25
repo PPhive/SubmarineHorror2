@@ -24,7 +24,7 @@ public class Radar : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (other.tag == "Enemy" && transform.childCount > 0)
         {
             BroadcastMessage("Exiting", other.gameObject);
         }
