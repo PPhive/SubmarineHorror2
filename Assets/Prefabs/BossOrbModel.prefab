@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5450864463948222204}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: BossOrbModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5450864463948222205}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 5450864464806690530}
   - {fileID: 5450864465240049518}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 5450864464806690535}
   - component: {fileID: 5450864464806690528}
   - component: {fileID: 5450864464806690529}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: CentralLava
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 5450864464806690531}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 5450864463948222204}
   m_RootOrder: 0
@@ -125,7 +125,7 @@ SphereCollider:
   m_GameObject: {fileID: 5450864464806690531}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 5450864465209834758}
   - component: {fileID: 5450864465209834759}
   - component: {fileID: 5450864465209834752}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Distortion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ SphereCollider:
   m_GameObject: {fileID: 5450864465209834754}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 5450864465240049523}
   - component: {fileID: 5450864465240049516}
   - component: {fileID: 5450864465240049517}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: InnerVortex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ Transform:
   m_GameObject: {fileID: 5450864465240049519}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 5450864463948222204}
   m_RootOrder: 1
@@ -315,7 +315,7 @@ SphereCollider:
   m_GameObject: {fileID: 5450864465240049519}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 5450864465494976762}
   - component: {fileID: 5450864465494976763}
   - component: {fileID: 5450864465494976756}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: OuterVortex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ Transform:
   m_GameObject: {fileID: 5450864465494976758}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 0.1, z: 3}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 5450864463948222204}
   m_RootOrder: 2
