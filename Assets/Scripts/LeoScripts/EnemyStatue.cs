@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyStatue : MonoBehaviour
 {
     public EnemyBaby MyBaby;
-    public GameObject MyBabyObject;
     public GameObject BabyPrefab;
     public GameObject CordPrefab;
     public Rigidbody RB;
@@ -15,7 +14,6 @@ public class EnemyStatue : MonoBehaviour
 
     void Start()
     {
-        MyBabyObject = MyBaby.gameObject;
         SpawnBaby();
     }
 

@@ -25,8 +25,13 @@ public class ConnectCordToStatue : MonoBehaviour
             {
                 Destroy(this.gameObject);
             }
-            TailScript.target = MyStatue.MyBabyObject.transform;
+            if (TailScript.target != MyStatue.MyBaby)
+            {
+                if (MyStatue.MyBaby != null)
+                {
+                    TailScript.target = MyStatue.MyBaby.transform;
+                }
+            }
         }
-
     }
 }
