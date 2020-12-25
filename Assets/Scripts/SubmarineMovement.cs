@@ -153,7 +153,7 @@ public class SubmarineMovement : MonoBehaviour
     {
         Vector3 forceDir = (transform.position - BossPos).normalized;
 
-        rb.AddForce(forceDir * bossForce, ForceMode.Impulse);
+        rb.AddForce(forceDir * 2000f, ForceMode.Impulse);
         rb.AddTorque(transform.right * bossTorque, ForceMode.Impulse);
     }
 
@@ -161,7 +161,7 @@ public class SubmarineMovement : MonoBehaviour
     {
         Vector3 forceDir = (transform.position - ExplosionPos).normalized;
 
-        rb.AddForce(forceDir * 1000f, ForceMode.Impulse);
+        rb.AddForce(forceDir * 300f, ForceMode.Impulse);
         rb.AddTorque(transform.right * 200f, ForceMode.Impulse);
     }
 
