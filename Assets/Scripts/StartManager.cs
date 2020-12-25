@@ -32,12 +32,14 @@ public class StartManager : MonoBehaviour
 
     private IEnumerator StartText()
     {
+
         titleText.color = new Color(1f, 1f, 1f, 0f);
         subTitleText.color = new Color(1f, 1f, 1f, 0f);
         startButtonText.color = new Color(1f, 1f, 1f, 0f);
+        yield return new WaitForSeconds(2f);
 
         float elapsedTime = 0f;
-        float duration = 4f;
+        float duration = 6f;
         Color initColor = new Color(0f, 0f, 0f, 1f);
         Color finalColor = new Color(0f, 0f, 0f, 0f);
         while (elapsedTime < duration)
