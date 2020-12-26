@@ -92,12 +92,6 @@ public class EndSequenceManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T)) // REMOVE THIS!!!!!
-            StartEndSequence();
-    }
-
     public void StartEndSequence()
     {
         // enable each boulder
