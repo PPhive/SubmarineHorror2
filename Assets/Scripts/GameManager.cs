@@ -148,7 +148,6 @@ public class GameManager : MonoBehaviour
         // Fade in deathText
         dead = true;
         StartCoroutine(BlackOverlayFadeIn(5f));
-        FadeAllSounds();
         yield return new WaitForSeconds(4f);
 
         deathText1.color = new Color(1f, 1f, 1f, 0f);
@@ -207,7 +206,6 @@ public class GameManager : MonoBehaviour
         // Fade in winText
         won = true;
         StartCoroutine(BlackOverlayFadeIn(4f));
-        FadeAllSounds();
         yield return new WaitForSeconds(4f);
 
         winText1.color = new Color(0f, 1f, 1f, 0f);
@@ -253,15 +251,5 @@ public class GameManager : MonoBehaviour
                 yield return null;
             }
         }
-    }
-
-    public void FadeAllSounds()
-    {
-        StartCoroutine(FadeAllSoundsEnum());
-    }
-
-    private IEnumerator FadeAllSoundsEnum()
-    {
-        yield return null;   
     }
 }
