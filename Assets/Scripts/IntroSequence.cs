@@ -24,7 +24,8 @@ public class IntroSequence : MonoBehaviour
     {
         StartCoroutine(NextSceneAfterOneMin());
         audioSourceAmbiance2 = FindObjectOfType<StartAmbiance>().GetComponent<AudioSource>();
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()

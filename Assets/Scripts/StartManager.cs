@@ -20,6 +20,8 @@ public class StartManager : MonoBehaviour
         blackBackground.color = new Color(0f, 0f, 0f, 1f);
         blackOverlay.color = new Color(0f, 0f, 0f, 0f);
         StartCoroutine(StartText());
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()
