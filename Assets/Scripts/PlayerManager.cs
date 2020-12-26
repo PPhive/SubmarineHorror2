@@ -262,6 +262,11 @@ public class PlayerManager : MonoBehaviour
         // play sizzling sound??
     }
 
+    public void WinSequence()
+    {
+        movement.canMove = false;
+    }
+
     private void DeathSequence()
     {
         if (GameManager.instance.dead)

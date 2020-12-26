@@ -76,9 +76,10 @@ public class EndSequenceManager : MonoBehaviour
         rushingWaterAS.clip = rushingWaterClip;
 
         lavaLake = FindObjectOfType<LavaManager>();
-        lavaLake.gameObject.SetActive(false);
+        lavaLake.enabled = false;
+        lavaLake.GetComponentInChildren<ParticleSystem>().Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
 
-        directionalLights = GetComponentsInChildren<Light>();
+        //directionalLights = GetComponentsInChildren<Light>();
         foreach (Light light in directionalLights)
         {
             light.enabled = false;
@@ -93,7 +94,7 @@ public class EndSequenceManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T)) // REMOVE THIS!!!!!
             StartEndSequence();
     }
 
@@ -111,6 +112,7 @@ public class EndSequenceManager : MonoBehaviour
         StartCoroutine(EndSequenceEnum());
 
         StartCoroutine(LavaSequenceEnum());
+        StartCoroutine(LightSequenceEnum());
 
         foreach (ParticleSystem ps in particleSystems)
         {
@@ -152,15 +154,10 @@ public class EndSequenceManager : MonoBehaviour
 
     private IEnumerator LavaSequenceEnum()
     {
-        foreach (Light light in directionalLights)
-        {
-            light.enabled = true;
-            light.intensity = 0f;
-        }
         float duration = 10f;
         float elapsedTime = 0f;
-        Vector3 initScale = new Vector3(5f, 0f, 5f);
-        Vector3 finalScale = new Vector3(5f, 45f, 5f);
+        Vector3 initScale = new Vector3(13.5f, 0f, 13.5f);
+        Vector3 finalScale = new Vector3(13.5f, 65f, 13.5f);
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
@@ -170,24 +167,47 @@ public class EndSequenceManager : MonoBehaviour
             {
                 trans.localScale = Vector3.Lerp(initScale, finalScale, fraction);
             }
-            foreach (Light light in directionalLights)
-            {
-                light.intensity = Mathf.Lerp(0f, .2f, fraction);
-            }
 
             yield return null;
         }
 
 
-        lavaLake.gameObject.SetActive(true);
-        
+        lavaLake.GetComponentInChildren<ParticleSystem>().Play(true);
+        lavaLake.enabled = true;
+    }
+
+    private IEnumerator LightSequenceEnum()
+    {
+        foreach (Light light in directionalLights)
+        {
+            light.enabled = true;
+            light.intensity = 0f;
+        }
+        float duration = 20f;
+        float elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float fraction = elapsedTime / duration;
+
+            for (int i = 0; i < 3; i++)
+            {
+                directionalLights[i].intensity = Mathf.Lerp(0f, .6f, fraction);
+            }
+            for (int i = 3; i < 6; i++)
+            {
+                directionalLights[i].intensity = Mathf.Lerp(0f, 6f, fraction);
+            }
+
+            yield return null;
+        }
     }
 
 
     private IEnumerator EndSequenceEnum()
     {
         // make rocks fall from ceiling, get lava columns to descend, get lava plane to raise, first start out slow then go faster
-
+        GameManager.instance.endSequence = true;
         PlayerManager.instance.camFX.ambientRumbling = true;
         rumblingAS.Play();
         rockCrashAS.Play();
@@ -205,5 +225,6 @@ public class EndSequenceManager : MonoBehaviour
     public void EndEndSequence()
     {
         GameManager.instance.WinSequence();
+        lavaLake.enabled = false;
     }
 }
