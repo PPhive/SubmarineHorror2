@@ -37,7 +37,7 @@ public class CameraFX : MonoBehaviour
 
     private void Update()
     {
-        if (ambientRumbling && !timedShaking)
+        if ((ambientRumbling || GameManager.instance.endSequence) && !timedShaking)
         {
             transform.localPosition = originalLocalPos + (new Vector3(Random.Range(-.1f, .1f), Random.Range(-.1f, .1f), 0f) * ambientShakeIntensity);
             transform.localEulerAngles = originalLocalRot + (new Vector3(Random.Range(-10f, 10f), Random.Range(-50f, 50f), 0f) * ambientShakeIntensity);

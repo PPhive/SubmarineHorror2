@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSoundManager : MonoBehaviour
 {
-    
+
     private Coroutine stoppingMoveSoundCO = null;
 
     private AudioSource impactAS;
@@ -25,7 +25,8 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] private AudioClip subMovementClip = null;
     [Range(0.0f, 1.0f), SerializeField] private float subMovementVolume = .5f;
     [SerializeField] private AudioClip[] ambientWaterClips = null;
-    [Range(0.0f, 1.0f), SerializeField]private float ambientWaterVolume = .4f;
+    [Range(0.0f, 1.0f), SerializeField] private float ambientWaterVolume = .4f;
+    [SerializeField] private AudioClip deathClip = null;
 
     private void Awake()
     {
@@ -180,7 +181,8 @@ public class PlayerSoundManager : MonoBehaviour
 
     public void DeactivateAmbientBossRumble()
     {
-        ambientBossRumbleAS.Stop();
+        if (!GameManager.instance.endSequence)
+            ambientBossRumbleAS.Stop();
     }
 
     public void BossCaughtPlayer()
@@ -195,6 +197,12 @@ public class PlayerSoundManager : MonoBehaviour
 
     public void DeathSounds()
     {
-
+        subMovementAS.Stop();
+        subMovementAS.clip = deathClip;
+        subMovementAS.volume = 1f;
+        subMovementAS.loop = false;
+        subMovementAS.Play();
     }
+
+    
 }

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text winText2 = null;
     public bool dead = false;
     public bool won = false;
+    public bool endSequence = false;
 
     public int numPillars = 5;
 
@@ -196,6 +197,7 @@ public class GameManager : MonoBehaviour
 
     public void WinSequence()
     {
+        PlayerManager.instance.WinSequence();
         StartCoroutine(WinSequenceEnum());
     }
 
@@ -203,7 +205,7 @@ public class GameManager : MonoBehaviour
     {
         // Fade in winText
         won = true;
-        StartCoroutine(BlackOverlayFadeIn(5f));
+        StartCoroutine(BlackOverlayFadeIn(4f));
         yield return new WaitForSeconds(4f);
 
         winText1.color = new Color(0f, 1f, 1f, 0f);
